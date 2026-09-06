@@ -1,0 +1,2 @@
+var e=!1,t=new Set;function n(){if(!e){e=!0;for(let e of t)e()}}function r(e){return t.add(e),()=>t.delete(e)}function i(){return e}export{n,r,i as t};
+//# sourceMappingURL=client-blocked-vDOoUAtU.js.map

@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-CbXtAM7H.js";import{d as t,g as n}from"./react-CofXSohn.js";var r=e(n(),1),i=`conversa`;function a(){let[e,n]=t(),a=e.get(i),o=(0,r.useCallback)(e=>{n(t=>{let n=new URLSearchParams(t);return n.set(i,e),n},{replace:!0})},[n]),s=(0,r.useCallback)(()=>{n(e=>{let t=new URLSearchParams(e);return t.delete(i),t},{replace:!0})},[n]);return(0,r.useMemo)(()=>({openMatchId:a,openChat:o,closeChat:s}),[a,o,s])}export{a as n,i as t};
+//# sourceMappingURL=chat-link-BILMjop1.js.map

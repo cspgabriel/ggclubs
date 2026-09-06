@@ -1,0 +1,2 @@
+import{n as e}from"./i18n-BFm_iB_d.js";import{getAuth as t,n,t as r}from"./index.esm-B1UHdD2S.js";n(`firebase`,`12.18.0`,`app`);var i=r({apiKey:`AIzaSyC2xa5Dpt6CgmzxUnjhtuUqF5MWt4ipkK8`,authDomain:`ggclubs.com.br`,projectId:`gg-clubs`,appId:`1:871110346396:web:8f7914779a46db7306cf59`}),a=t(i);a.languageCode=e;export{i as firebaseApp,a as firebaseAuth};
+//# sourceMappingURL=firebase-DMHkZkdl.js.map

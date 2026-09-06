@@ -1,0 +1,2 @@
+import{p as e}from"./react-CofXSohn.js";import{S as t}from"./button-CsNuymln.js";var n=e(),r=5;function i({value:e,max:i,within:a=r}){let o=e?.length??0;return o<i-a?null:(0,n.jsxs)(`span`,{"aria-live":`polite`,className:t(`shrink-0 text-xs tabular-nums`,o>=i?`text-foreground`:`text-muted-foreground`),children:[o,`/`,i]})}export{i as t};
+//# sourceMappingURL=char-count-HBzFuLT-.js.map

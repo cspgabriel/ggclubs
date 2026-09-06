@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-CbXtAM7H.js";import{g as t}from"./react-CofXSohn.js";var n=e(t(),1);function r(e){(0,n.useEffect)(()=>{if(!e)return;let t=document.title;return document.title=`${e} · GGClubs`,()=>{document.title=t}},[e])}export{r as t};
+//# sourceMappingURL=use-document-title-BVjVY9w6.js.map

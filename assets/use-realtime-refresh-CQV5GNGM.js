@@ -1,0 +1,2 @@
+import{n as e}from"./use-realtime-topic-BmHBhKYy.js";function t(t,n,r){e(t,e=>{if(e.kind===`resync`){r();return}n.includes(e.type)&&r()})}export{t};
+//# sourceMappingURL=use-realtime-refresh-CQV5GNGM.js.map

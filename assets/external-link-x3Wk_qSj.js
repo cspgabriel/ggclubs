@@ -1,0 +1,2 @@
+import{p as e}from"./react-CofXSohn.js";import{b as t,p as n}from"./button-CsNuymln.js";var r=e();function i({href:e,onClick:i,children:a,...o}){return(0,r.jsx)(`a`,{...o,href:e,target:`_blank`,rel:`noopener noreferrer`,onClick:r=>{i?.(r),!(r.defaultPrevented||!t())&&(r.preventDefault(),n(e))},children:a})}export{i as t};
+//# sourceMappingURL=external-link-x3Wk_qSj.js.map

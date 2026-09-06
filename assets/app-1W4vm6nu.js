@@ -1,0 +1,2 @@
+import{invoke as e}from"./core-SwWLTXZB.js";import"./image-DYNeXH9E.js";var t;(function(e){e.Nsis=`nsis`,e.Msi=`msi`,e.Deb=`deb`,e.Rpm=`rpm`,e.AppImage=`appimage`,e.App=`app`})(t||={});async function n(){return e(`plugin:app|version`)}export{n as getVersion};
+//# sourceMappingURL=app-1W4vm6nu.js.map

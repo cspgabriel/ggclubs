@@ -1,0 +1,2 @@
+import{p as e}from"./react-CofXSohn.js";import{S as t}from"./button-CsNuymln.js";var n=e();function r({children:e,className:r,...i}){return(0,n.jsx)(`div`,{"aria-hidden":!0,className:t(`motion-safe:animate-pulse motion-reduce:animate-none`,r),...i,children:e})}function i({className:e,size:r=`0.9rem`}){return(0,n.jsx)(`span`,{className:t(`chamfer block bg-secondary`,e),style:{"--chamfer":r}})}function a({className:e}){return(0,n.jsx)(`span`,{className:t(`block rounded bg-secondary`,e)})}export{i as n,r,a as t};
+//# sourceMappingURL=skeleton-BFwgH5Pk.js.map

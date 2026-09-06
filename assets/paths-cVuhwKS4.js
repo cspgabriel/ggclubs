@@ -1,0 +1,2 @@
+function e(e){return`/player/${e.toLowerCase()}`}function t(e){return`/app/players/${e.toLowerCase()}`}function n(e){return`/app/clubs/${e.toLowerCase()}`}function r(e){return`/campeonato/${e.toLowerCase()}`}function i(e){return`/app/campeonatos/${e.toLowerCase()}`}function a(e){return`/admin/campeonatos/${e.toLowerCase()}`}var o=`/novidades`,s={terms:`/termos`,privacy:`/privacidade`,refund:`/reembolso`};export{t as a,r as c,n as i,s as n,i as o,a as r,e as s,o as t};
+//# sourceMappingURL=paths-cVuhwKS4.js.map

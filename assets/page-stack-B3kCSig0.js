@@ -1,0 +1,2 @@
+import{p as e}from"./react-CofXSohn.js";import{S as t}from"./button-CsNuymln.js";var n=e(),r=`space-y-6`;function i({children:e,className:i}){return(0,n.jsx)(`div`,{className:t(r,i),children:e})}export{i as n,r as t};
+//# sourceMappingURL=page-stack-B3kCSig0.js.map

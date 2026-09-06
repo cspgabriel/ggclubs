@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-CbXtAM7H.js";import{g as t}from"./react-CofXSohn.js";var n=e(t(),1),r={tournament:null,match:null,myTag:null,canReport:!1,moment:null,clubs:new Map,registrations:[],matches:[],myTags:[],reportableTags:[],onBar:!1},i=(0,n.createContext)(r),a=36e5;function o(e,t,n=new Date){if(e===`toReport`)return!0;let r=new Date(t).getTime()-n.getTime();return e===`live`?r>=-36e5:e===`soon`&&r<=a}function s(){return(0,n.useContext)(i)}export{s as i,i as n,o as r,r as t};
+//# sourceMappingURL=running-match-context-C7QwSKAM.js.map

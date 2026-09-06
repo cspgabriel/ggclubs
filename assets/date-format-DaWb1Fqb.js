@@ -1,0 +1,2 @@
+import{n as e}from"./i18n-BFm_iB_d.js";var t={numeric:{day:`numeric`,month:`numeric`,year:`numeric`},long:{day:`numeric`,month:`long`,year:`numeric`}},n=new Map;function r(r,i=`numeric`,a=e){let o=typeof r==`string`?new Date(r):r;if(Number.isNaN(o.getTime()))return``;let s=`${a}:${i}`,c=n.get(s);return c||(c=new Intl.DateTimeFormat(a,t[i]),n.set(s,c)),c.format(o)}export{r as t};
+//# sourceMappingURL=date-format-DaWb1Fqb.js.map

@@ -1,0 +1,2 @@
+import{invoke as e}from"./core-SwWLTXZB.js";async function t(){return await e(`plugin:autostart|is_enabled`)}async function n(){await e(`plugin:autostart|enable`)}async function r(){await e(`plugin:autostart|disable`)}export{r as disable,n as enable,t as isEnabled};
+//# sourceMappingURL=dist-js-nTy39BBW.js.map

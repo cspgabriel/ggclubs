@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-CbXtAM7H.js";import{g as t}from"./react-CofXSohn.js";var n=e(t(),1),r=(0,n.createContext)(null);function i(){let e=(0,n.useContext)(r);if(!e)throw Error(`useMyClubs must be used inside <MyClubsProvider>`);return e}function a(){let e=i(),[t,r]=(0,n.useState)(null);return(0,n.useEffect)(()=>{!t&&(e.status===`ready`||e.status===`error`)&&r(e)},[e,t]),t??e}export{a as n,r,i as t};
+//# sourceMappingURL=use-my-clubs-BsnFfMW2.js.map

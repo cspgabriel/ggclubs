@@ -1,0 +1,2 @@
+import{p as e}from"./react-CofXSohn.js";import{t}from"./i18n-DgQ1Etbk.js";import{S as n}from"./button-CsNuymln.js";import{t as r}from"./badge-RjwTDhW_.js";import{t as i}from"./position-DDgu9m8s.js";var a=e();function o({position:e,size:o=`sm`,className:s}){let{t:c}=t();return(0,a.jsx)(r,{variant:`success`,size:o===`lg`?`md`:`sm`,title:c(`account.positionLabel`),className:n(`font-display tracking-normal`,o===`lg`?`h-8 px-2.5 text-base`:`h-[26px] px-2 text-[13px]`,s),children:c(i(e))})}export{o as t};
+//# sourceMappingURL=position-mark-DJEAgW_V.js.map

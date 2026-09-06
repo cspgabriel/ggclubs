@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="pt-BR" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0F0F0F" />
+    <!-- Avisa o motor antes de qualquer CSS: sem isto ele pinta a página de
+         branco até o bundle chegar, e num app escuro isso é um lampejo. -->
+    <meta name="color-scheme" content="dark" />
+    <style>
+      /* Mesmo valor de `--background`. Fica aqui, e não no CSS importado,
+         porque este bloco é aplicado no primeiro quadro · o arquivo do tema
+         chega alguns quadros depois e é justamente esse intervalo que piscava. */
+      html,
+      body {
+        background-color: #0f0f0f;
+        margin: 0;
+      }
+
+      /* Marca do intervalo em que o React ainda não existe: entre a janela
+         abrir e o bundle ser avaliado. Um componente não alcança este trecho ·
+         ele só nasce quando o JavaScript termina de carregar.
+
+         Mesma regra do BootSplash: só aparece depois de 140ms. Se o bundle
+         chegar antes, o React remove este bloco e ele nunca chegou a ter
+         opacidade · é o que evita trocar a tela branca por um pisca de marca. */
+      #boot {
+        position: fixed;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        background-color: #0f0f0f;
+        opacity: 0;
+        animation: boot-in 0.2s ease-out 0.14s forwards;
+      }
+
+      /* Rota que **pode** pintar rápido espera mais antes de mostrar a marca.
+         Landing e login não dependem de sessão: em conexão boa eles aparecem
+         antes dos 140ms e a marca viraria pisca · era por isso que este bloco
+         era removido neles, ao preço de a landing passar ~1,9s em preto numa
+         rede ruim, que é pior. Com o limiar mais alto, os dois casos ficam
+         certos: quem pinta rápido nunca vê a marca, quem demora não vê o vazio.
+
+         A landing é a primeira tela que alguém vê do produto, então o vazio ali
+         custa mais que em qualquer outro lugar.
+
+         **700ms, e o número foi medido, não escolhido.** O atraso conta a
+         partir do primeiro render deste bloco, e **não** da navegação · então o
+         limiar efetivo é "o HTML chegou, e o app ainda não". Com a landing
+         renderizando aos 163ms (sem limite), 554 (10 Mbps), 906 (4 Mbps), 1794
+         (3G bom) e 3996 (3G ruim), 700ms deixa as três primeiras sem marca
+         nenhuma e cobre as duas últimas inteiras. Um valor menor põe a borda do
+         pisca justo na faixa dos 4 Mbps, que é conexão comum. */
+      #boot.boot-late {
+        animation-delay: 0.7s;
+      }
+
+      @keyframes boot-in {
+        to {
+          opacity: 1;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        #boot {
+          animation-duration: 0.01s;
+        }
+      }
+    </style>
+    <!-- Sem isto as fontes só começam a baixar depois do CSS ser processado, e o
+         texto aparece na face do sistema antes de trocar pra nossa · cerca de
+         320ms em conexão lenta. Só as duas faces do dia a dia; `latin-ext` fica
+         de fora porque o português não usa. -->
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/fonts/plus-jakarta-sans-latin-wght-normal.woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/fonts/archivo-black-latin-400-normal.woff2"
+      crossorigin
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <!-- ESTE bloco é o que o preview de link lê, e não o do `SeoHead`.
+
+         WhatsApp, Discord e a maior parte dos crawlers **não rodam
+         JavaScript** · eles leem o HTML servido. O `SeoHead` (react-helmet)
+         escreve as tags certas depois, no cliente, e elas ficam **depois**
+         destas no documento · quem lê o HTML cru vê só estas.
+
+         **Isto ficou dizendo "A rede social dos Clubs" depois de a comunicação
+         virar campeonato**, em 08/08/2026 · ou seja, o link colado no grupo do
+         WhatsApp (que é o canal de aquisição) mostrava o posicionamento velho.
+         Achado por um probe que leu **todas** as tags em vez da primeira.
+
+         **Quem mexer na copy da landing mexe aqui junto.** -->
+    <title>GGClubs · Campeonato de Pro Clubs com o seu club de verdade</title>
+    <meta
+      name="description"
+      content="Campeonatos de Pro Clubs no EA FC. Veja as próximas edições, confira valores e vagas e acompanhe grupos, mata-mata e resultados com o seu club."
+    />
+    <meta
+      property="og:title"
+      content="GGClubs · Campeonato de Pro Clubs com o seu club de verdade"
+    />
+    <meta
+      property="og:description"
+      content="Campeonatos de Pro Clubs no EA FC. Veja as próximas edições, confira valores e vagas e acompanhe grupos, mata-mata e resultados com o seu club."
+    />
+    <!-- ATENCAO: nao escreva a sintaxe de variavel do Vite dentro deste
+         comentario. O Vite varre o HTML inteiro, inclusive comentario, e avisa
+         "is not defined in env variables" pra um nome que nao existe · foi o que
+         aconteceu em 09/08/2026 ao explicar a linha de baixo.
+
+         **URL absoluta, e nao /og.png** · previewer nenhum resolve caminho
+         relativo · ele busca a imagem fora do contexto da página. O domínio vem
+         do .env pela substituicao de variavel que o Vite faz no build (a sintaxe
+         de porcentagem usada na linha abaixo) · cravado aqui
+         ele viraria o mesmo problema do `ASSETS_PUBLIC_BASE_URL` com o host do
+         CloudFront: valor plausível e errado esperando alguém trocar de domínio.
+         O cartão é gerado por `pnpm brand:og`. -->
+    <meta property="og:image" content="https://ggclubs.com.br/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <!-- A tipografia é servida pelo próprio app, via @fontsource no index.css.
+         Ver o comentário lá: o desktop precisa dela sem internet. -->
+    <script type="module" src="/src/main.tsx"></script>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" crossorigin href="/assets/index-DmHO4RiW.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <div id="boot" aria-hidden="true">
+      <svg width="232" height="40" viewBox="0 0 1291 224" role="img" aria-label="GGClubs">
+        <path
+          fill="#07F469"
+          fill-rule="evenodd"
+          d="M75.48 0 L207.48 0 L200.74 48 L72.74 48 L54.75 176 L134.75 176 L140.37 136 L104.37 136 L110.55 92 L194.55 92 L182.18 180 L132 224 L0 224 L25.3 44Z M275.48 0 L407.48 0 L400.74 48 L272.74 48 L254.75 176 L334.75 176 L340.37 136 L304.37 136 L310.55 92 L394.55 92 L382.18 180 L332 224 L200 224 L225.3 44Z"
+        />
+        <path
+          fill="#FAFAFA"
+          fill-rule="evenodd"
+          d="M495.48 0 L627.48 0 L620.74 48 L492.74 48 L474.75 176 L602.75 176 L602.18 180 L552 224 L420 224 L445.3 44Z M671.48 0 L699.48 0 L671.94 196 L644 224 L620 224 L648.67 20Z M715.05 60 L763.05 60 L746.75 176 L826.75 176 L843.05 60 L891.05 60 L874.18 180 L824 224 L692 224Z M943.48 0 L971.48 0 L963.05 60 L1091.05 60 L1074.18 180 L1024 224 L892 224 L920.67 20Z M956.3 108 L1036.3 108 L1026.75 176 L946.75 176Z M1115.05 60 L1291.05 60 L1284.86 104 L1156.86 104 L1153.49 128 L1281.49 128 L1273.62 184 L1232 224 L1092 224 L1098.18 180 L1226.18 180 L1229.56 156 L1101.56 156Z"
+        />
+      </svg>
+    </div>
+    <script>
+      // Espera curta com indicador fica pior que espera curta sem nada · abaixo
+      // de ~300ms o indicador só pisca. Onde a espera é sempre real (app
+      // instalado, ou rota que depende de sessão) a marca entra cedo; onde ela
+      // *pode* ser curta, entra tarde. Nenhuma rota fica sem nada.
+      (function () {
+        var isDesktop = '__TAURI_INTERNALS__' in window;
+        var isProtectedRoute = /\/(app|admin|onboarding)(\/|$)/.test(location.pathname);
+        var hadSession = false;
+        try {
+          hadSession = localStorage.getItem('ggclubs:had-session') === '1';
+        } catch (e) {
+          // Armazenamento bloqueado · sem dica, trata como primeira visita.
+        }
+        var boot = document.getElementById('boot');
+        // **Nenhuma rota fica sem nada.** Esta linha já removeu o bloco em tudo
+        // que não dependia de sessão, e o efeito medido foi a landing passar
+        // ~1,9s em preto numa rede ruim · trocar o pisca pelo vazio não era o
+        // negócio que a gente pensou estar fazendo. Hoje a rota que pode pintar
+        // rápido só espera mais pra mostrar a marca.
+        if (boot && !isProtectedRoute && !(isDesktop && hadSession)) {
+          boot.className = 'boot-late';
+        }
+      })();
+    </script>
+  </body>
+</html>

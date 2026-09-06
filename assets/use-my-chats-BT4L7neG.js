@@ -1,0 +1,2 @@
+import{n as e}from"./rolldown-runtime-CbXtAM7H.js";import{g as t}from"./react-CofXSohn.js";var n=e(t(),1),r=(0,n.createContext)({chats:{total:0,rooms:[]},reload:()=>{}});function i(){return(0,n.useContext)(r)}export{r as n,i as t};
+//# sourceMappingURL=use-my-chats-BT4L7neG.js.map
